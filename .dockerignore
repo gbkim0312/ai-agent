@@ -1,0 +1,13 @@
+.git
+.gitignore
+.vscode
+.idea
+.venv
+target
+web/target
+output
+obsidian-vault
+docker-data
+api_key.txt
+*.log
+*.log.*

@@ -24,3 +24,7 @@ output/
 .venv/
 obsidian-vault/
 scripts/jira-issue-getter/out/
+
+api_key.txt
+.env.docker
+docker-data/

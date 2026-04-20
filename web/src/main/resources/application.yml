@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: gemini
+    active: ${APP_MODEL_PROFILE:gemini}
   servlet:
     multipart:
       max-file-size: 30MB

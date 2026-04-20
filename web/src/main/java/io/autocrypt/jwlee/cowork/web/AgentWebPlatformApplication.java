@@ -2,6 +2,7 @@ package io.autocrypt.jwlee.cowork.web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -39,10 +40,12 @@ public class AgentWebPlatformApplication {
     }
 
     @Bean
-    public UserDetailsService userDetailsService() {
+    public UserDetailsService userDetailsService(
+            @Value("${app.security.username:inhouse}") String username,
+            @Value("${app.security.password:inhouse}") String password) {
         UserDetails user = User.withDefaultPasswordEncoder()
-                .username("inhouse")
-                .password("inhouse")
+                .username(username)
+                .password(password)
                 .roles("USER")
                 .build();
 

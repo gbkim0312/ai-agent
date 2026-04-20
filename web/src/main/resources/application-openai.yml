@@ -1,0 +1,21 @@
+spring:
+  autoconfigure:
+    exclude:
+      - com.embabel.agent.autoconfigure.models.googlegenai.AgentGoogleGenAiAutoConfiguration
+
+embabel:
+  models:
+    default-llm: gpt-4.1-mini
+    default-embedding-model: text-embedding-3-small
+    llms:
+      simple: gpt-4.1-nano
+      normal: gpt-4.1-mini
+      performant: gpt-4.1
+  agent:
+    platform:
+      llm-operations:
+        timeout-seconds: 300
+      models:
+        openai:
+          api-key: ${OPENAI_API_KEY}
+          base-url: ${OPENAI_BASE_URL:https://api.openai.com/v1/}

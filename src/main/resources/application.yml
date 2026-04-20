@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: gemini
+    active: ${APP_MODEL_PROFILE:gemini}
   main:
     banner-mode: off
     log-startup-info: false

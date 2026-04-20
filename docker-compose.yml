@@ -1,0 +1,24 @@
+services:
+  ai-agent-web:
+    image: ai-agent-web:local
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ai-agent-web
+    restart: unless-stopped
+    ports:
+      - "${WEBAPP_BIND_PORT:-8081}:8081"
+    environment:
+      APP_MODEL_PROFILE: ${APP_MODEL_PROFILE:-gemini}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_BASE_URL: ${OPENAI_BASE_URL:-https://api.openai.com/v1/}
+      SERVER_PORT: 8081
+      APP_SECURITY_USERNAME: ${APP_SECURITY_USERNAME:-inhouse}
+      APP_SECURITY_PASSWORD: ${APP_SECURITY_PASSWORD:-inhouse}
+      APP_H2_CONSOLE_ENABLED: ${APP_H2_CONSOLE_ENABLED:-false}
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL:-jdbc:h2:file:/app/data/agentdb}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME:-sa}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD:-}
+    volumes:
+      - ${WEBAPP_DATA_DIR:-./docker-data/web}:/app/data
